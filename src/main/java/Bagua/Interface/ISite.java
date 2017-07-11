@@ -1,3 +1,5 @@
+package Bagua.Interface;
+
 import Bagua.Base.CoinInfo;
 import Bagua.Base.EnumCoins;
 

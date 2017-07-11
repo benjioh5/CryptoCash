@@ -8,9 +8,10 @@ import org.json.simple.JSONObject;
 import Bagua.Base.CoinInfo;
 import Bagua.Base.EnumCoins;
 import Bagua.Interface.ICachedSite;
+import Bagua.Interface.ISite;
 
 
-public class BittrexAPI extends ICachedSite
+public class BittrexAPI extends ICachedSite implements ISite
 {
     final private String MarketToken = "MarketName";
     final private String BidToken = "Bid";
