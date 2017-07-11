@@ -1,4 +1,4 @@
-package Bagua.Interface;
+package Bagua.Base;
 
 import Bagua.Base.CoinInfo;
 import Bagua.Base.EnumCoins;
@@ -11,19 +11,17 @@ import java.util.HashMap;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public abstract class ICachedSite
+public class SiteParser
 {
-    protected HashMap<String, CoinInfo> Cached;
 
-    protected JSONParser                Parser;
-    protected InputStreamReader         SiteReader;
-    protected URL                       Site;
+    protected   JSONParser                Parser;
+    protected   InputStreamReader         SiteReader;
+    protected   URL                       Site;
 
-    public ICachedSite(String SiteURL) throws Exception
+    public SiteParser(String SiteURL) throws Exception
     {
         // Creating new common site parser.
         Parser      = new JSONParser();
-        Cached      = new HashMap<String,CoinInfo>();
 
         // Initialize Reader.
         Site        = new URL(SiteURL);
@@ -31,7 +29,7 @@ public abstract class ICachedSite
     }
     
     // 사이트로부터 오브젝트를 읽어옵니다.
-    protected Object getObject()
+    public Object getObject()
     {
         Object object = null;
 
@@ -58,23 +56,9 @@ public abstract class ICachedSite
     //              }
     //          }
     // ask, bid 의 값이 담겨있는 Map을 반환합니다.
-    protected Object getObject(String[] Tokens)
+    public Object getObject(String[] Tokens)
     {
         Object object = getObject();
         return JsonTool.ParseWithTokenDepth(object, Tokens);
-    }
-
-    // 캐시된 코인들에 대한 키를 만듭니다.
-    protected String CreateKey(EnumCoins coin)
-    {
-        String Token = coin.toString();
-
-        if(coin == EnumCoins._1ST | coin == EnumCoins._2GIVE)
-        {
-            // 앞부분의 _을 잘라냅니다.
-            Token = Token.substring(1);
-        }
-
-        return Token;
     }
 }
