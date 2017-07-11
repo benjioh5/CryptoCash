@@ -11,7 +11,7 @@ import java.util.HashMap;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public abstract class ICachedSite
+public abstract class ICachedSite implements ISite
 {
     protected HashMap<String, CoinInfo> Cached;
 
@@ -77,14 +77,4 @@ public abstract class ICachedSite
 
         return Token;
     }
-
-    // 지원되는 코인의 종류를 모두 구합니다.
-    public abstract EnumCoins[] getAvailableCoins();
-
-    // Bitcoin : coin = 1 : Value 형태로 나와야합니다.
-    // 비트코인의 가격이 1일때의 coin의 비율을 구해주세요.
-    public abstract CoinInfo getCoinInfo(EnumCoins coin);
-
-    // 모든 비트코인 데이터를 캐시합니다.
-    public abstract void Refresh();
 }
