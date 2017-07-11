@@ -11,7 +11,7 @@ import java.util.HashMap;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public abstract class ICachedSite implements ISite
+public abstract class ICachedSite
 {
     protected HashMap<String, CoinInfo> Cached;
 
