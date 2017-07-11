@@ -1,12 +1,9 @@
 package Bagua.Base;
 
-import Bagua.Base.CoinInfo;
-import Bagua.Base.EnumCoins;
 import Bagua.Base.JsonTool;
 
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.HashMap;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
