@@ -41,11 +41,6 @@ public class PloniexAPI extends ISite
         Cached = new HashMap<String, CoinInfo>();
     }
 
-    private boolean isaBitcoinVeriusRatio(String token)
-    {
-        return token.startsWith("BTC_");
-    }
-
     public CoinInfo getCoinInfo(EnumCoins coin)
     {
         return Cached.get(CreateKey(coin));
