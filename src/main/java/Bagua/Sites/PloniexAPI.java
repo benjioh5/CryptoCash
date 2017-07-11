@@ -15,10 +15,10 @@ import Bagua.Interface.ISite;
 
 public class PloniexAPI extends ISite
 {
-    final private String BidToken = "Bid";
-    final private String AskToken = "Ask";
-    final private String HighestIn24Hr = "High";
-    final private String LowestIn24Hr = "Low";
+    final private String BidToken = "highestBid";
+    final private String AskToken = "lowestAsk";
+    final private String HighestIn24Hr = "high24hr";
+    final private String LowestIn24Hr = "low24hr";
 
     SiteParser                  Parser;
     HashMap<String, CoinInfo>   Cached;
