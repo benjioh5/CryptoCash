@@ -1,16 +1,18 @@
 package Bagua.Sites;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 
 import Bagua.Base.CoinInfo;
 import Bagua.Base.EnumCoins;
-import Bagua.Interface.ICachedSite;
+import Bagua.Base.SiteParser;
+import Bagua.Interface.ISite;
 
 
-public class BittrexAPI extends ICachedSite
+public class BittrexAPI extends ISite
 {
     final private String MarketToken = "MarketName";
     final private String BidToken = "Bid";
@@ -18,23 +20,21 @@ public class BittrexAPI extends ICachedSite
     final private String HighestIn24Hr = "High";
     final private String LowestIn24Hr = "Low";
 
+    SiteParser                Parser;
+    HashMap<String, CoinInfo> Cached;
+
 
     public BittrexAPI() throws Exception
     {
         // Create As Bittrex Website;
         // This can throws exception when is failed to connect.
-        super("https://bittrex.com/api/v1.1/public/getmarketsummaries");
+        Parser = new SiteParser("https://bittrex.com/api/v1.1/public/getmarketsummaries");
+        Cached = new HashMap<String, CoinInfo>();
     }
 
     private boolean isaBitcoinVeriusRatio(String token)
     {
         return token.startsWith("BTC-");
-    }
-
-    public EnumCoins[] getAvailableCoins()
-    {
-        // 모든 코인들을 지원합니다.
-        return EnumCoins.values();
     }
 
     public CoinInfo getCoinInfo(EnumCoins coin)
@@ -47,7 +47,7 @@ public class BittrexAPI extends ICachedSite
         // 다시 캐시하기전에 모든 캐시된 값을 클리어합니다.
         Cached.clear();
 
-        ArrayList<JSONObject> InfoArray = (ArrayList<JSONObject>) getObject(
+        ArrayList<JSONObject> InfoArray = (ArrayList<JSONObject>) Parser.getObject(
             // Get into depth...
             new String[] { "result" }
         );

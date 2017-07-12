@@ -5,7 +5,7 @@ import java.util.EnumMap;
 import Bagua.Base.CoinInfo;
 import Bagua.Base.EnumCoins;
 import Bagua.Base.EnumSites;
-import Bagua.Interface.ICachedSite;
+import Bagua.Interface.ISite;
 import Bagua.Sites.*;
 
 public class CryptoCash
@@ -27,7 +27,7 @@ public class CryptoCash
 
 
     // Real implements.
-    EnumMap<EnumSites, ICachedSite> Sites;
+    EnumMap<EnumSites, ISite> Sites;
 
     CryptoCash() throws Exception
     {
@@ -40,9 +40,5 @@ public class CryptoCash
     public CoinInfo getCoinInfo(EnumSites site, EnumCoins coin)
     {
         return Sites.get(site).getCoinInfo(coin);
-    }
-    public EnumCoins[] getAvailableCoins(EnumSites site)
-    {
-        return Sites.get(site).getAvailableCoins();
     }
 }
