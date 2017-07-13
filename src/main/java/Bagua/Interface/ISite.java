@@ -6,21 +6,21 @@ import Bagua.Base.EnumCoins;
 
 public abstract class ISite
 {
-    // Bitcoin : coin = Value : 1 ÇüÅÂ·Î ³ª¿Í¾ßÇÕ´Ï´Ù.
-    // coinÀÇ °¡°İÀÌ 1ÀÏ¶§ÀÇ ºñÆ®ÄÚÀÎ °¡°İÀ» ±¸ÇØÁÖ¼¼¿ä.
+    // Bitcoin : coin = Value : 1 í˜•íƒœë¡œ ë‚˜ì™€ì•¼í•©ë‹ˆë‹¤.
+    // coinì˜ ê°€ê²©ì´ 1ì¼ë•Œì˜ ë¹„íŠ¸ì½”ì¸ ê°€ê²©ì„ êµ¬í•´ì£¼ì„¸ìš”.
     public abstract CoinInfo getCoinInfo(EnumCoins coin);
 
-    // ¸ğµç ºñÆ®ÄÚÀÎ µ¥ÀÌÅÍ¸¦ Ä³½ÃÇÕ´Ï´Ù.
+    // ëª¨ë“  ë¹„íŠ¸ì½”ì¸ ë°ì´í„°ë¥¼ ìºì‹œí•©ë‹ˆë‹¤.
     public abstract void Refresh();
 
-    // Ä³½ÃµÈ ÄÚÀÎµé¿¡ ´ëÇÑ Å°¸¦ ¸¸µì´Ï´Ù.
+    // ìºì‹œëœ ì½”ì¸ë“¤ì— ëŒ€í•œ í‚¤ë¥¼ ë§Œë“­ë‹ˆë‹¤.
     protected String CreateKey(EnumCoins coin)
     {
         String Token = coin.toString();
 
         if(coin == EnumCoins._1ST | coin == EnumCoins._2GIVE)
         {
-            // ¾ÕºÎºĞÀÇ _À» Àß¶ó³À´Ï´Ù.
+            // ì•ë¶€ë¶„ì˜ _ì„ ì˜ë¼ëƒ…ë‹ˆë‹¤.
             Token = Token.substring(1);
         }
 
