@@ -1,6 +1,6 @@
 package Bagua.Sites;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,27 +44,27 @@ public class BittrexAPI extends ISite
 
     public void Refresh()
     {
-        // ´Ù½Ã Ä³½ÃÇÏ±âÀü¿¡ ¸ðµç Ä³½ÃµÈ °ªÀ» Å¬¸®¾îÇÕ´Ï´Ù.
+        // ï¿½Ù½ï¿½ Ä³ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Ä³ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         Cached.clear();
 
-        ArrayList<JSONObject> InfoArray = (ArrayList<JSONObject>) Parser.getObject(
+        List<JSONObject> InfoArray = (List<JSONObject>) Parser.getObject(
             // Get into depth...
             new String[] { "result" }
         );
 
         for(Map<String, String> InfoObject : InfoArray)
         {
-            // ¸¶ÄÏÀÇ ÀÌ¸§À» °¡Á®¿É´Ï´Ù.
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É´Ï´ï¿½.
             String marketName   = InfoObject.get(MarketToken);
 
-            // BTC À» ±âÁØÀ¸·Î ÇÑ ÄÚÀÎÀÇ °ªÀÌ ¾Æ´Ï¶ó¸é ´ÙÀ½°ªÀ» ±¸ÇÕ´Ï´Ù.
+            // BTC ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
             if(isaBitcoinVeriusRatio(marketName) == false) 
             {
                 continue;
             }
             
-            // »çÀÌÆ®·ÎºÎÅÍ °ªÀ» °¡Á®¿É´Ï´Ù.
-            // »çÀÌÆ®ÀÇ °ªµéÀº String°ªÀÌ¹Ç·Î Double·Î ÆÄ½ÌÀÌ ÇÊ¿äÇÕ´Ï´Ù.
+            // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É´Ï´ï¿½.
+            // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Stringï¿½ï¿½ï¿½Ì¹Ç·ï¿½ Doubleï¿½ï¿½ ï¿½Ä½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Õ´Ï´ï¿½.
             CoinInfo newInfo = new CoinInfo();
 
             newInfo.Ask         = Double.parseDouble(InfoObject.get(BidToken));
@@ -72,10 +72,10 @@ public class BittrexAPI extends ISite
             newInfo.Max24Hr     = Double.parseDouble(InfoObject.get(HighestIn24Hr));
             newInfo.Min24Hr     = Double.parseDouble(InfoObject.get(LowestIn24Hr));
 
-            // ¾ÕºÎºÐÀÇ "BTC-"" ºÎºÐÀ» Àß¶ó³À´Ï´Ù.
+            // ï¿½ÕºÎºï¿½ï¿½ï¿½ "BTC-"" ï¿½Îºï¿½ï¿½ï¿½ ï¿½ß¶ï¿½ï¿½ï¿½Ï´ï¿½.
             String TargetCoin   = marketName.substring(4);
 
-            // Ä³½ÃµÈ°ªÀ» ³Ö½À´Ï´Ù.
+            // Ä³ï¿½ÃµÈ°ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.
             Cached.put(TargetCoin, newInfo);
         }
     }
