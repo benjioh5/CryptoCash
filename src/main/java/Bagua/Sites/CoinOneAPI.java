@@ -1,6 +1,9 @@
 package Bagua.Sites;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.json.simple.JSONObject;
 
 import Bagua.Base.CoinInfo;
 import Bagua.Base.EnumCoins;
@@ -56,7 +59,7 @@ public class CoinOneAPI extends ISite {
                     new String[] { BidToken }
             );
 
-           newInfo.Bid = Double.parseDouble(bidContext[0].get("price"));
+           newInfo.Bid = Double.parseDouble(bidContext.get(0).get("price").toString());
 
 
 
@@ -64,7 +67,7 @@ public class CoinOneAPI extends ISite {
                     new String[] { AskToken }
             );
 
-            newInfo.Ask = Double.parseDouble(askContext[0].get("price"));
+            newInfo.Ask = Double.parseDouble(askContext.get(0).get("price").toString());
 
             Cached.put(CreateKey(cointype), newInfo);
         }

@@ -25,7 +25,7 @@ public class SiteParser
         SiteReader  = new InputStreamReader(Site.openStream(), "UTF-8");
     }
     
-    // »çÀÌÆ®·ÎºÎÅÍ ¿ÀºêÁ§Æ®¸¦ ÀĞ¾î¿É´Ï´Ù.
+    // ì‚¬ì´íŠ¸ë¡œë¶€í„° ì˜¤ë¸Œì íŠ¸ë¥¼ ì½ì–´ì˜µë‹ˆë‹¤.
     public Object getObject()
     {
         Object object = null;
@@ -42,8 +42,8 @@ public class SiteParser
         return object;
     }
 
-    // ·çÆ®¿¡ ÀÖ´Â ¿ÀºêÁ§Æ®¸¦ ±¸ÇØÁİ´Ï´Ù.
-    // ¿¹½Ã : getObject(new String[] {"result", "objects", "currency"})
+    // ë£¨íŠ¸ì— ìˆëŠ” ì˜¤ë¸Œì íŠ¸ë¥¼ êµ¬í•´ì¤ë‹ˆë‹¤.
+    // ì˜ˆì‹œ : getObject(new String[] {"result", "objects", "currency"})
     //          result : {
     //              objects : {
     //                  currency : {
@@ -52,7 +52,7 @@ public class SiteParser
     //                  }
     //              }
     //          }
-    // ask, bid ÀÇ °ªÀÌ ´ã°ÜÀÖ´Â MapÀ» ¹İÈ¯ÇÕ´Ï´Ù.
+    // ask, bid ì˜ ê°’ì´ ë‹´ê²¨ìˆëŠ” Mapì„ ë°˜í™˜í•©ë‹ˆë‹¤.
     public Object getObject(String[] Tokens)
     {
         Object object = getObject();

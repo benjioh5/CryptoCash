@@ -7,6 +7,8 @@ import Bagua.Interface.ISite;
 
 import java.util.HashMap;
 
+import org.json.simple.JSONObject;
+
 /**
  * Created by benjioh5 on 12/07/2017.
  */
@@ -24,7 +26,7 @@ public class YunbiAPI extends ISite {
     };
     SiteParser Parser;
 
-    public BitfineExAPI() {
+    public YunbiAPI() {
         Cached = new HashMap<String, CoinInfo>();
     }
 
@@ -41,12 +43,13 @@ public class YunbiAPI extends ISite {
 
             for(EnumCoins coin : AvailableCoins) {
                 CoinInfo newInfo = new CoinInfo();
-                JSONObject need_to_parse = (JSONObject) Parser.getObject("{ " + coin.toString() +"cny }");
+                String[] string = { CreateKey(coin).toLowerCase() + "cny" };
+                JSONObject need_to_parse = (JSONObject) Parser.getObject(string);
 
-                newInfo.Ask         = Double.parseDouble(need_to_parse.getDouble("buy"));
-                newInfo.Bid         = Double.parseDouble(need_to_parse.getDouble("sell"));
-                newInfo.Max24Hr     = Double.parseDouble(need_to_parse.getDouble("high"));
-                newInfo.Min24Hr     = Double.parseDouble(need_to_parse.getDouble("low"));
+                newInfo.Ask         = Double.parseDouble(need_to_parse.get("buy").toString());
+                newInfo.Bid         = Double.parseDouble(need_to_parse.get("sell").toString());
+                newInfo.Max24Hr     = Double.parseDouble(need_to_parse.get("high").toString());
+                newInfo.Min24Hr     = Double.parseDouble(need_to_parse.get("low").toString());
                 
                 Cached.put(CreateKey(coin), newInfo);
             }
