@@ -1,7 +1,6 @@
 package Bagua.Base;
 
-
-public enum EnumSites
+public enum EnumSite
 {
     Poloniex,
     Bithumb,
